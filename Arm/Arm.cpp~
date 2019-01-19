@@ -1,0 +1,77 @@
+#include "Arm.h"
+#include <assert.h>
+
+/* Constructor creates the arm and set the pin values and side type
+ @param: pinA, pinB, side type*/
+Arm::Arm(int pinA_, int pinB_, char side_){
+  assert(side_ == 'r' || side == 'l');
+  pinA = pinA_;
+  pinB = pinB_;
+  side = side_;
+}
+
+void Arm::startPosition() {
+  openArm();
+}
+
+/* Open right arm all the way */
+void Arm::openArm() {
+  if(side == 'r'){
+    while (digitalRead(RIGHT_LIMIT_SWITCH_PIN) == 1) { //while right limit switch not hit, move right arm right
+      moveRight(SPEED);
+    }
+    stop();
+  }else if(side == 'l'){
+    while (digitalRead(LEFT_LIMIT_SWITCH_PIN) == 1) { //while left limit switch not hit, move left arm left
+      moveLeft(SPEED);
+    }
+    stop();
+  }else{
+    //    std::cout << "side isn't l or r" << std::endl;
+    return;
+  }
+}
+
+/* Open right arm all the way */
+void Arm::closeArm() {
+  if(side == 'r'){
+    while (digitalRead(RIGHT_LIGHT_PIN) == 1) { //while right light sensor not hit, move right arm left
+      moveLeft(SPEED);
+    }
+    stop();
+  }else if(side == 'l'){
+    while (digitalRead(LEFT_LIGHT_PIN) == 1) { //while left light sensor not hit, move left arm right
+      moveRight(SPEED);
+    }
+    stop();
+  }else{
+    //    std::cout << "side isn't l or r" << std::endl;
+    return;
+  }
+}
+
+/*
+  Move given arm right at given speed
+  @param speed between 0 and 255 inclusive
+*/
+void Arm::moveRight(int duty) {
+  digitalWrite(pinA, LOW);
+  digitalWrite(pinB, HIGH);
+  analogWrite(SPEED_PIN, duty);
+}
+
+/*
+  Move given arm left at given speed
+  @param speed between 0 and 255 inclusive
+*/
+void Arm::moveLeft(int duty) {
+  digitalWrite(pinA, HIGH);
+  digitalWrite(pinB, LOW);
+  analogWrite(SPEED_PIN, duty);
+}
+
+/* Stop arm */
+void Arm::stop() {
+  digitalWrite(pinA, LOW);
+  digitalWrite(pinB, LOW);
+}
