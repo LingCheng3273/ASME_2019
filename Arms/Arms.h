@@ -3,6 +3,8 @@
 
 #include <stdlib.h>
 #include "Arm.h"
+#include "Pivot.h"
+#include "Motor.h"
 
 /* Arms is a wrapper for the Arm class to open and close the arm */
 class Arms{
@@ -16,6 +18,14 @@ class Arms{
   /* closes both arms */
   void close();
 
+  void turnUp();
+
+  void turnDown();
+
+  void setPivotZero();
+
+  void liftArm();
+
   /* set everything to initial position */
   void setup();
 
@@ -26,11 +36,14 @@ class Arms{
   /* uses the arm class */
   Arm rightArm;
   Arm leftArm;
+  Pivot pivot;
 
   /* returns whether the right/left arm is open/closed */
   boolean checkRightOpen();
   boolean checkLeftOpen();
+  boolean checkArmsDown();
   boolean checkRightClose();
   boolean checkLeftClose();
+
 };
 #endif

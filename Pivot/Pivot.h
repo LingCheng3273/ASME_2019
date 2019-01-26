@@ -1,15 +1,12 @@
-// ensures this file is only included once
-#ifndef Arm_h
-#define Arm_h
+#ifndef Pivot_h
+#define Pivot_h
 
-// includes variable constants
-#include "Variables.h"
 #include "Motor.h"
+#include "Variables.h"
 
-class Arm{
+class Pivot{
  public:
-  /* constructor */
-  Arm();
+  Pivot();
 
   /* gets the current position of the arm */
   float getPos();
@@ -21,16 +18,16 @@ class Arm{
   void setZeroPos();
   
   /*
-    Move arm right at given speed
+    Move arm up at given speed
     @param speed between 0 and 100 inclusive
   */
-  void moveRight(int speed, int time);
+  void turnUp(int speed, int time);
 
   /*
-    Move arm left at given speed
+    Move arm down at given speed
     @param speed between 0 and 100 inclusive
   */
-  void moveLeft(int speed, int time);
+  void turnDown(int speed, int time);
   
   /*
     Stop arm
@@ -40,5 +37,7 @@ class Arm{
  private:
   Motor motor;
   float openPos;
+  
+ private:
 };
 #endif

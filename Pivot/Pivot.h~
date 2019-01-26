@@ -1,0 +1,11 @@
+#ifndef Pivot_h
+#define Pivot_h
+
+class Pivot{
+ public:
+  Pivot();
+
+  
+ private:
+};
+

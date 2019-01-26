@@ -5,9 +5,10 @@
 
 /* @param: pins for arm motors
    creates an instance of rightArm and leftArm using the pins*/
-Arms::Arms(){
+Arms::Arms():pivot(){
   rightArm = Arm();
   leftArm = Arm();
+  pivot = Pivot();
 }
 
 /* returns whether rightArm is open */
@@ -20,6 +21,11 @@ boolean Arms::checkLeftOpen(){
   return !digitalRead(LEFT_LIMIT_SWITCH_PIN);
 }
 
+/* returns whether  is open */
+boolean Arms::checkArmsDown(){
+  return !digitalRead(BOTTOM_LIMIT_SWITCH_PIN);
+}
+
 /* returns whether rightArm is closed */
 boolean Arms::checkRightClose(){
   return !digitalRead(RIGHT_LIGHT_PIN);
@@ -29,6 +35,7 @@ boolean Arms::checkRightClose(){
 boolean Arms::checkLeftClose(){
   return !digitalRead(LEFT_LIGHT_PIN);
 }
+
 
 /* opens rightArm and leftArm until they're completely open */
 void Arms::open(){
@@ -55,6 +62,21 @@ void Arms::close(){
   }
 }
 
+void Arms::turnUp(){
+  pivot.turnUp(SLOW_SPEED, TIME);
+}
+
+void Arms::turnDown(){
+  pivot.turnDown(SLOW_SPEED, TIME);
+}
+
+void Arms::setPivotZero(){
+  pivot.setZeroPos();
+}
+
+void Arms::liftArm(){
+  //auto lift to place balls
+}
 
 /* opens the arms */
 void Arms::setup(){

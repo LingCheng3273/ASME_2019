@@ -24,10 +24,10 @@ void Arm::setZeroPos(){
 
 /*
   Move given arm right at given speed
-  @param speed between 0 and 255 inclusive
+  @param speed between 0 and 100 inclusive
 */
 void Arm::moveRight(int speed, int time) {
-  motor.turn(speed, 0);
+  motor.turn(speed, CW);
   delay(time);
   motor.stop();
   motor.updatePos();
@@ -40,10 +40,10 @@ void Arm::moveRight(int speed, int time) {
 
 /*
   Move given arm left at given speed
-  @param speed between 0 and 255 inclusive
+  @param speed between 0 and 100 inclusive
 */
 void Arm::moveLeft(int speed, int time) {
-  motor.turn(speed, 1);
+  motor.turn(speed, CCW);
   delay(time);
   motor.stop();
   motor.updatePos();

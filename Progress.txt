@@ -7,6 +7,14 @@ Accomplishments:
 Problems: 
 	Arm() couldn't work with Motor
 		Since Motor needs args for constructor, needed to initialize it in function name
+	Don't know whether 2 motors can turn at the same time (have to rewrite open and close in Arm)
+Plans: 
+	Work on pivot and vertical motion
+		Make a Pivot class that turns up, down. Automate perfect angle or manual.
+	Figure out Bluetooth control
+	Arms::liftArm()
+	Arms:: turnUp and turnDown with degrees
+	Move up and move down with distance
 
 1/22/19
 Arm library is basic arm fuctions
