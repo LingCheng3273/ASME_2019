@@ -20,7 +20,7 @@ type "git add -A" + enter to add all your changes
 	if you only want to add specific files then type "git add " + file name + enter
 type "git commit" + enter. This should bring you to a new screen.
 type "i" (which should't show up) and type your commit message about what you changed
-press "esc" (which brings your cursor to the bottom of the screen) and type ":wq: + enter
+press "esc" and type ":wq" (which shows up at the bottom of the screen) + enter
 it should show your commit and what you changed
 
 
