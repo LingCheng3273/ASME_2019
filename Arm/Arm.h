@@ -3,49 +3,42 @@
 #define Arm_h
 
 // includes variable constants
-#include <Arduino.h>
 #include "Variables.h"
+#include "Motor.h"
 
 class Arm{
  public:
-  /* constructor needs the pins for the motor and which arm */
-  Arm(int pinA_, int pinB_, char side_);
+  /* constructor */
+  Arm();
 
-  /* return whether the arm is completely open*/
-  Boolean checkOpen();
+  /* gets the current position of the arm */
+  float getPos();
+  
+  /* gets the zero position */
+  float getZeroPos();
 
-  /* return whether the arm is completely closed*/
-  Boolean checkClose();
+  /* sets openPos to the current position */
+  void setZeroPos();
   
   /*
     Move arm right at given speed
     @param speed between 0 and 255 inclusive
   */
-  void moveRight(int duty);
+  void moveRight(int speed, int time);
 
   /*
     Move arm left at given speed
     @param speed between 0 and 255 inclusive
   */
-  void moveLeft(int duty);
+  void moveLeft(int speed, int time);
   
   /*
     Stop arm
   */
   void stop();
-  
-  /* Set arm to starting position */
-  void startPosition();
-
-  /* Open arm all the way */
-  void openArm();
-  
-  /* Close arm all the way */
-  void closeArm();
 
  private:
-  char side; //'l' for left, 'r' for right
-  int pinA;
-  int pinB;
+  Motor motor;
+  float openPos;
 };
 #endif

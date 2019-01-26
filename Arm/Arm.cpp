@@ -3,81 +3,57 @@
 
 /* Constructor creates the arm and set the pin values and side type
  @param: pinA, pinB, side type*/
-Arm::Arm(int pinA_, int pinB_, char side_){
-  assert(side_ == 'r' || side == 'l');
-  pinA = pinA_;
-  pinB = pinB_;
-  side = side_;
+Arm::Arm():motor(LINEAR, COUNTABLE, 0){
 }
 
 
-Boolean Arm::checkOpen(){
-  if(side == 'r'){
-    return digitalRead(RIGHT_LIMIT_SWITCH_PIN) == 0;
-  }else{
-    return digitalRead(LEFT_LIMIT_SWITCH_PIN) == 0;
-  }
+/* gets the current position of the arm */
+float Arm::getPos(){
+  return motor.getPos();
 }
 
-Boolean Arm::checkClose(){
-  if(side == 'r'){
-    return digitalRead(RIGHT_LIGHT_PIN) == 0;
-  }else{
-    return digitalRead(LEFT_LIGHT_PIN) == 0;
-  }
+/* gets the zero position */
+float Arm::getZeroPos(){
+  return openPos;
+}
+
+/* sets the zero position to the current position*/
+void Arm::setZeroPos(){
+  openPos = motor.getPos();
 }
 
 /*
   Move given arm right at given speed
   @param speed between 0 and 255 inclusive
 */
-void Arm::moveRight(int duty) {
-  digitalWrite(pinA, LOW);
-  digitalWrite(pinB, HIGH);
-  analogWrite(SPEED_PIN, duty);
+void Arm::moveRight(int speed, int time) {
+  motor.turn(speed, 0);
+  delay(time);
+  motor.stop();
+  motor.updatePos();
+  /*  
+      digitalWrite(pinA, LOW);
+      digitalWrite(pinB, HIGH);
+      analogWrite(SPEED_PIN, duty);
+  */
 }
 
 /*
   Move given arm left at given speed
   @param speed between 0 and 255 inclusive
 */
-void Arm::moveLeft(int duty) {
-  digitalWrite(pinA, HIGH);
-  digitalWrite(pinB, LOW);
-  analogWrite(SPEED_PIN, duty);
+void Arm::moveLeft(int speed, int time) {
+  motor.turn(speed, 1);
+  delay(time);
+  motor.stop();
+  motor.updatePos();
+  /*  digitalWrite(pinA, HIGH);
+      digitalWrite(pinB, LOW);
+      analogWrite(SPEED_PIN, duty);
+  */
 }
 
 /* Stop arm */
 void Arm::stop() {
-  digitalWrite(pinA, LOW);
-  digitalWrite(pinB, LOW);
+  motor.stop();
 }
-
-void Arm::startPosition() {
-  openArm();
-}
-
-/* Open right arm all the way */
-void Arm::openArm() {
-  while (!checkOpen()) { //while right limit switch not hit, move right arm right
-    if(side == "r"){
-      moveRight(SPEED);
-    }else{
-      moveLeft(SPEED);
-    }
-  }
-  stop();
-}
-
-/* Open right arm all the way */
-void Arm::closeArm() {
-  while (!checkClose()) { //while right limit switch not hit, move right arm right
-    if(side == "r"){
-      moveLeft(SPEED);
-    }else{
-      moveRight(SPEED);
-    }
-  }
-  stop();
-}
-

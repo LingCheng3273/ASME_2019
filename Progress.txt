@@ -1,0 +1,25 @@
+Need to look at previous robot code to see how drivetrain works
+
+1/25/19
+Accomplishments:
+	Got Arm to work with Motor
+	Added more variables for Motor
+Problems: 
+	Arm() couldn't work with Motor
+		Since Motor needs args for constructor, needed to initialize it in function name
+
+1/22/19
+Arm library is basic arm fuctions
+Arms library is a wrapper class that controls both arms
+Arms- wrote checkOpen/checkClose for each arm
+	  wrote setup that sets the opening position as the zero position
+	  wrote reset that reopens the arms, speed with respect the distance
+Plans: 
+	Write puesdo code for Motor class
+	Test Arm class
+
+1/18/19
+Arm library that allows arm to move left, right, open, close, and stop
+Stage: functions. Idea: don't need stage class. Put all functions in Arm
+Might have to remove functions other than basic from Arm 
+	and put open and closing to arms
