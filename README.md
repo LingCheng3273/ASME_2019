@@ -22,6 +22,7 @@ type "git commit" + enter. This should bring you to a new screen.
 type "i" (which should't show up) and type your commit message about what you changed
 press "esc" and type ":wq" (which shows up at the bottom of the screen) + enter
 it should show your commit and what you changed
+type "git push" to update the online GitHub repo
 
 
 
