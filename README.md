@@ -5,7 +5,7 @@ Github instuctions:
 Installing GitHub:  
 Download and install Git bash for your laptop: https://git-scm.com/downloads  
   
-First time cloning the repo:  
+First time cloning the repo:
 - Open Git Bash and navigate to where you want the repository to be.  
 - Go to GitHub online to the ASME_2019 repo.  
 - Click on the green "Clone or download" button.  
@@ -13,7 +13,7 @@ First time cloning the repo:
 - Go to Git Bash and type "git clone " and paste the link.  
 - Now you should have all the files.  
   
-Committing changes:  
+Committing changes:
 - Open Git Bash and navigate to where the repo is.  
 - type "git pull" + enter to get the latest version.  
 - type "git add -A" + enter to add all your changes.  
