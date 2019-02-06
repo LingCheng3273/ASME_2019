@@ -12,9 +12,12 @@ class Arms{
   /* constructor needs 2 pins for each arm */
   Arms();
 
+  /* set everything to initial position */
+  void setup();
+  
   /* opens both arms */
   void open();
- 
+  
   /* closes both arms */
   void close();
 
@@ -24,10 +27,11 @@ class Arms{
 
   void setPivotZero();
 
-  void liftArm();
+  void setLinearZero();
 
-  /* set everything to initial position */
-  void setup();
+  void pickUp();
+
+
 
   /* reset all parts to starting position */
   void reset();
@@ -44,6 +48,10 @@ class Arms{
   boolean checkArmsDown();
   boolean checkRightClose();
   boolean checkLeftClose();
+
+  int rightOpenSpeed();
+  int leftOpenSpeed();
+  //  int openSpeed();
 
 };
 #endif

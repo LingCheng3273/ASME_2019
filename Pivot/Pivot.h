@@ -9,13 +9,22 @@ class Pivot{
   Pivot();
 
   /* gets the current position of the arm */
-  float getPos();
+  float getPivotPos();
   
   /* gets the zero position */
-  float getZeroPos();
+  float getPivotZeroPos();
+
+    /* gets the current position of the arm */
+  float getLinearPos();
+  
+  /* gets the zero position */
+  float getLinearZeroPos();
 
   /* sets openPos to the current position */
-  void setZeroPos();
+  void setPivotZeroPos();
+
+  /* sets openPos to the current position */
+  void setLinearZeroPos();
   
   /*
     Move arm up at given speed
@@ -28,6 +37,10 @@ class Pivot{
     @param speed between 0 and 100 inclusive
   */
   void turnDown(int speed, int time);
+
+  void moveUp(int speed, int time);
+
+  void moveDown(int speed, int time);
   
   /*
     Stop arm
@@ -35,8 +48,12 @@ class Pivot{
   void stop();
 
  private:
-  Motor motor;
-  float openPos;
+  Motor pivot_motor1;
+  Motor pivot_motor2;
+  Motor linear_motor1;
+  Motor linear_motor2;
+  float pivotOpenPos;
+  float linearOpenPos;
   
  private:
 };

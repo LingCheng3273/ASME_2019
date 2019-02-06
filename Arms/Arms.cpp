@@ -5,7 +5,7 @@
 
 /* @param: pins for arm motors
    creates an instance of rightArm and leftArm using the pins*/
-Arms::Arms():pivot(){
+Arms::Arms(){
   rightArm = Arm();
   leftArm = Arm();
   pivot = Pivot();
@@ -36,16 +36,36 @@ boolean Arms::checkLeftClose(){
   return !digitalRead(LEFT_LIGHT_PIN);
 }
 
+int Arms::rightOpenSpeed(){
+  if(abs(rightArm.getZeroPos() - rightArm.getPos()) >= OPEN_THRESHOLD){
+    return FAST_SPEED;
+  }else{
+    return SLOW_SPEED;
+  }
+}
+
+int Arms::leftOpenSpeed(){
+ if(abs(leftArm.getZeroPos() - leftArm.getPos()) >= OPEN_THRESHOLD){
+    return FAST_SPEED;
+  }else{
+    return SLOW_SPEED;
+  }
+}
+
+/*int Arms::openSpeed(){
+
+  }*/
+
 
 /* opens rightArm and leftArm until they're completely open */
 void Arms::open(){
   int r_speed, l_speed;
   while(!checkRightOpen() || !checkLeftOpen()){
     if(!checkRightOpen()){
-      rightArm.moveRight(SLOW_SPEED, TIME);
+      rightArm.moveRight(rightOpenSpeed(), TIME);
     }
     if(!checkLeftOpen()){
-      leftArm.moveLeft(SLOW_SPEED, TIME);
+      leftArm.moveLeft(leftOpenSpeed(), TIME);
     }
   }
 }
@@ -71,11 +91,18 @@ void Arms::turnDown(){
 }
 
 void Arms::setPivotZero(){
-  pivot.setZeroPos();
+  pivot.setPivotZeroPos();
 }
 
-void Arms::liftArm(){
-  //auto lift to place balls
+void Arms::setLinearZero(){
+  pivot.setLinearZeroPos();
+}
+
+void Arms::pickUp(){
+  close();
+  //move up
+  //pivot
+  
 }
 
 /* opens the arms */

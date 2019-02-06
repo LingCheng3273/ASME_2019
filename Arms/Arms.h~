@@ -1,6 +1,0 @@
-class Arms{
- public:
-  void open();
-  void close();
-  
-};

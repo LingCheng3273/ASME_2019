@@ -31,11 +31,6 @@ void Arm::moveRight(int speed, int time) {
   delay(time);
   motor.stop();
   motor.updatePos();
-  /*  
-      digitalWrite(pinA, LOW);
-      digitalWrite(pinB, HIGH);
-      analogWrite(SPEED_PIN, duty);
-  */
 }
 
 /*
@@ -47,10 +42,6 @@ void Arm::moveLeft(int speed, int time) {
   delay(time);
   motor.stop();
   motor.updatePos();
-  /*  digitalWrite(pinA, HIGH);
-      digitalWrite(pinB, LOW);
-      analogWrite(SPEED_PIN, duty);
-  */
 }
 
 /* Stop arm */

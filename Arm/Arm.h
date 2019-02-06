@@ -13,7 +13,7 @@ class Arm{
 
   /* gets the current position of the arm */
   float getPos();
-  
+
   /* gets the zero position */
   float getZeroPos();
 

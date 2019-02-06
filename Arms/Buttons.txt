@@ -1,0 +1,7 @@
+Liftup: liftup button
+Setup: Arms::setup()
+Drive up to pole: Diving buttons
+Pick up ball: Arms::pickup()
+
+
+Motors:

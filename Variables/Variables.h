@@ -14,7 +14,6 @@ const int BOTTOM_LIMIT_SWITCH_PIN = 9; //value 0 is pressed, 1 is not pressed
 const int RIGHT_LIGHT_PIN = 0; //right sensor (Analog pin A0)
 const int LEFT_LIGHT_PIN = 15; //left sensor (Analog pin A1)
 
-
 const int SPEED = 200; //general speed
 const int MOVE_RIGHT_SPEED = 50; //might make local for comp
 const int MOVE_LEFT_SPEED = 50; //might make local for comp
@@ -33,6 +32,8 @@ const int ROTATIONAL = true;
 const int COUNTABLE = true;
 
 const int OPEN_THRESHOLD = 5; //distance to slow opening
+const int ARM_OUT_POS = 100;
+const int ARM_UP_POS = 120;
 const int BEAM_THRESHOLD = 250; //threshold < 700 for beam on, threshold > 700 for beam off
 
 /*boolean stopped = false;
